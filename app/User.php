@@ -42,5 +42,9 @@ class User extends Authenticatable
         return $this->hasMany(Question::class);
     }
 
-    
+    //accessor
+    public function getUrlAttribute() // called in index as $question->user->url
+    {
+        return '#';
+    }
 }
