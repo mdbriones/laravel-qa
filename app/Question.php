@@ -24,14 +24,26 @@ class Question extends Model
     }
 
     //accessor
-    public function getUrlAttribute() // called in index as $question->url
+    public function getUrlAttribute() // called in index.blade.php as $question->url
     {
         return route('questions.show', $this->id);
     }
 
     //accessor
-    public function getCreatedDateAttribute() // called in index as $question->created_date
+    public function getCreatedDateAttribute() // called in index.blade.php as $question->created_date
     {
-        return $this->created_at->diffForHumans(); // ex. 1 day ago 
+        return $this->created_at->diffForHumans(); // diffForHumans() method returns => ex. 1 day ago 
+    }
+
+    //accessor
+    public function getStatusAttribute()
+    {
+        if($this->answers > 0){
+            if($this->best_answer_id){
+                return "answered-accepted";
+            }
+            return "answered";
+        }
+        return "unanswered";
     }
 }
