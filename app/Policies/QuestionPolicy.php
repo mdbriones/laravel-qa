@@ -32,7 +32,7 @@ class QuestionPolicy
     public function delete(User $user, Question $question)
     {
         //remove if the user is the author of the question and that there were no answers
-        return $user->id == $question->user_id && $question->answers < 1;
+        return $user->id == $question->user_id && $question->answers_count < 1;
 
     }
 }
