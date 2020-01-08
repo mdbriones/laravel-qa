@@ -28,7 +28,10 @@ class Answer extends Model
         static::created(function ($answer) {
             $answer->question->increment('answers_count');
         });
+    }
 
-        
+    public function getCreatedDateAttribute() // called in index.blade.php as $question->created_date
+    {
+        return $this->created_at->diffForHumans(); // diffForHumans() method returns => ex. 1 day ago 
     }
 }
