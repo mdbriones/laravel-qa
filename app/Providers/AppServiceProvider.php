@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Question;
+use Illuminate\Support\Facades\Route;
+// use Route;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        
     }
 }
