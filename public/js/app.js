@@ -49613,8 +49613,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /mnt/c/Users/mdb/Documents/LaraVue/1/laravel-qa/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /mnt/c/Users/mdb/Documents/LaraVue/1/laravel-qa/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\MDB\Documents\LaraVue\1\laravel-qa\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\MDB\Documents\LaraVue\1\laravel-qa\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
