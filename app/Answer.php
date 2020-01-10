@@ -44,7 +44,7 @@ class Answer extends Model
         return $this->created_at->diffForHumans(); // diffForHumans() method returns => ex. 1 day ago 
     }
 
-    public function getStatusAttribute()
+    public function getStatusAttribute() // constructor --> called as $answer->status.... the 'Status' part in the getStatusAttribute is automatically understood by laravel if answer->status is called. 
     {
         return $this->id == $this->question->best_answer_id ? 'vote-accepted' : '';
     }
