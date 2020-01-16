@@ -27,19 +27,19 @@ class Question extends Model
         $this->attributes['slug'] = str_slug($value);
     }
 
-    //accessor
+    // accessor
     public function getUrlAttribute() // called in index.blade.php as $question->url
     {
         return route('questions.show', $this->slug);
     }
 
-    //accessor
+    // accessor
     public function getCreatedDateAttribute() // called in index.blade.php as $question->created_date
     {
         return $this->created_at->diffForHumans(); // diffForHumans() method returns => ex. 1 day ago 
     }
 
-    //accessor
+    // accessor
     public function getStatusAttribute()
     {
         if($this->answers_count > 0){
