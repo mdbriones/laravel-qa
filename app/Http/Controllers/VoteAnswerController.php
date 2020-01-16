@@ -14,7 +14,8 @@ class VoteAnswerController extends Controller
     public function __invoke(Answer $answer)
     {
         $vote = (int) request()->vote;
-        auth()->user()->voteAnswer($answer, $vote);
+
+        auth()->user()->voteAnswer($answer, $vote); // get the current user instance and then call the voteAnswer method from the Answer model
 
         return back();
     }

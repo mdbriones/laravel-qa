@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
+    // all the method define in the trait file will be available in this model.
+    // trait is created in the app folder.
+    use VotableTrait;
+
     protected $fillable = [
         'title',
         'body'
@@ -82,20 +86,4 @@ class Question extends Model
     {
         return $this->favorites->count();
     }
-
-    public function votes()
-    {
-        return $this->morphToMany(User::class, 'votable');
-    }
-
-    public function upVotes()
-    {
-        return $this->votes()->wherePivot('vote', 1);
-    }
-
-    public function downVotes()
-    {
-        return $this->votes()->wherePivot('vote', -1);
-    }
-    
 }

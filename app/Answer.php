@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+    // all the method define in the trait file will be available in this model.
+    // trait is created in the app folder.
+    use VotableTrait; 
+
     protected $fillable = [
         'body',
         'user_id'
@@ -57,20 +61,5 @@ class Answer extends Model
     public function isBest()
     {
         return $this->id == $this->question->best_answer_id;
-    }
-
-    public function votes()
-    {
-        return $this->morphToMany(User::class, 'votable');
-    }
-    
-    public function upVotes()
-    {
-        return $this->votes()->wherePivot('vote', 1);
-    }
-
-    public function downVotes()
-    {
-        return $this->votes()->wherePivot('vote', -1);
     }
 }
