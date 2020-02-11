@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Mews\Purifier\Facades\Purifier;
+// use Mews\Purifier\Purifier;
 
 class Question extends Model
 {
@@ -53,7 +55,7 @@ class Question extends Model
 
     public function getBodyHtmlAttribute()
     {
-        return \Parsedown::instance()->text($this->body);
+        return Purifier::clean($this->bodyHtml());
     }
 
     public function answers()
@@ -86,4 +88,21 @@ class Question extends Model
     {
         return $this->favorites->count();
     }
+
+    public function getExcerptAttribute()
+    {
+        return $this->excerpt(250);
+    }
+
+    public function excerpt($length)
+    {
+        return str_limit(strip_tags($this->bodyHtml()), $length);
+    }
+
+    protected function bodyHtml()
+    {
+        return \Parsedown::instance()->text($this->body);
+    }
+
+    
 }
