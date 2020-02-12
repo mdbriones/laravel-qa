@@ -32,6 +32,9 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         Route::bind('slug', function($slug) {
+            // return Question::with(['answers.user', 'answers'=> function ($query){
+            //     $query->orderBy('votes_count', 'DESC'); // to sort by votes_count from the answers table
+            // }])->where('slug', $slug)->first() ?? abort(404);
             return Question::with('answers.user')->where('slug', $slug)->first() ?? abort(404);
         });
 

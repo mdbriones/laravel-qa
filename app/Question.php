@@ -60,7 +60,7 @@ class Question extends Model
 
     public function answers()
     {
-        return $this->hasMany(Answer::class);
+        return $this->hasMany(Answer::class)->orderBy('votes_count', 'DESC'); //show answers on descending order based on votes_count
     } 
 
     public function acceptBestAnswer(Answer $answer) // set the value of column best_answer_id in the question table
